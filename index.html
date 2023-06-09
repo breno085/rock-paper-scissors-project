@@ -7,6 +7,17 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+  <h1>You vs the Computer!</h1>
+  <h3>Score</h3>
+
+  <div id="round"></div>
+  <div id="score"></div>
+  <div id="result"></div>
+
+  <button id="rock">Rock</button>
+  <button id="paper">Paper</button>
+  <button id="scissors">Scissors</button>
+
     <script>
         function getComputerChoice(){
           let num = Math.random();
@@ -19,70 +30,84 @@
           }
         }
 
-      function playRound(playerSelection, computerSelection){
+        function playRound(playerSelection, computerSelection){
         if (playerSelection.toLowerCase() === "rock") {
           if (computerSelection === "rock"){
+            document.getElementById("round").innerHTML = "Tie!";
             return "Tie";
           } else if (computerSelection === "paper"){
+            document.getElementById("round").innerHTML = "Paper beats rock, you lose!";
             return "Lose"
           } else {
+            document.getElementById("round").innerHTML = "Rock beats scissors, you win!";
             return "Win";
           }
         }
         if (playerSelection.toLowerCase() === "paper"){
           if (computerSelection === "rock"){
+            document.getElementById("round").innerHTML = "Paper beats rock, you win";
             return "Win";
           } else if (computerSelection === "paper") {
+            document.getElementById("round").innerHTML = "Tie!";
             return "Tie";
           } else {
+            document.getElementById("round").innerHTML = "Scissors beats paper, you lose!";
             return "Lose";
           }
         }
         if (playerSelection.toLowerCase() === "scissors"){
           if (computerSelection === "rock"){
+            document.getElementById("round").innerHTML = "Rock beats scissors, you lose!";
             return "Lose";
           } else if (computerSelection === "paper"){
+            document.getElementById("round").innerHTML = "Scissors beats paper, you win!";
             return "Win";
           } else {
+            document.getElementById("round").innerHTML = "Tie!";
             return "Tie";
           }
         }
       }
     
-    function game(){
-      let playerWin = 0;
-      let compWin = 0;
-      let tie = 0;
-        for (let i = 0; i < 5; i++){
-          const playerSelection = prompt("Rock, Paper or Scissors", '');
-          const computerSelection = getComputerChoice();
-          playRound(playerSelection, computerSelection);
-          console.log(playerSelection.toLowerCase());
-          console.log(computerSelection);
-          console.log(playRound(playerSelection, computerSelection));
-            if (playRound(playerSelection, computerSelection) === "Win") {
-            playerWin++;
-            console.log(playerWin + " x " + compWin);
-            if (playerWin === 3) {
-              console.log("You Win!");
-              return;
-            }
-          } else if (playRound(playerSelection, computerSelection) === "Lose"){
-            compWin++;
-            console.log(playerWin + " x " + compWin);
-            if (compWin === 3) {
-              console.log ("You Lose!");
-              return;
-            }
-             } else {
-            tie++;
-            i--;
-          }
-        }
+    let win = 0;
+    let lose = 0;
+    
+    const buttons = document.querySelectorAll('button');
+    
+    //const rock = document.querySelector('#rock');
+    //const paper = document.querySelector('#paper');
+    //const scissors = document.querySelector('#scissors');
+    //It is best to use the forEach method than create an event for each button, like the examples above
+    buttons.forEach((button) => {
+
+    button.addEventListener('click', () => {
+      let score = playRound(button.id, getComputerChoice());
+      game(score);
+    });
+    });
+    
+    function game(score){
+      if (score === "Win"){
+        win++;
+        document.getElementById("score").innerHTML = win + " x " + lose;
+        //console.log(win + " x " + lose);
+      } else if (score === "Lose"){
+        lose++;
+        document.getElementById("score").innerHTML = win + " x " + lose;
+        //console.log(win + " x " + lose);
+      } else if (score === "Tie"){
+        document.getElementById("score").innerHTML = win + " x " + lose;     
+      }
+      if (win === 3 && win != lose){
+        document.getElementById("result").innerHTML = "You Won!";
+        win = 0; 
+        lose = 0;
+      } else if (lose === 3 && lose != win){
+        document.getElementById("result").innerHTML = "You Lost!";
+        win = 0; 
+        lose = 0;
+      }
     }
-    
-    game();
-    
     </script>
 </body>
 </html>
