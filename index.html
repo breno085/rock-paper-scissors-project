@@ -31,7 +31,7 @@
         }
 
         function playRound(playerSelection, computerSelection){
-        if (playerSelection.toLowerCase() === "rock") {
+        if (playerSelection === "rock") {
           if (computerSelection === "rock"){
             document.getElementById("round").innerHTML = "Tie!";
             return "Tie";
@@ -43,7 +43,7 @@
             return "Win";
           }
         }
-        if (playerSelection.toLowerCase() === "paper"){
+        if (playerSelection === "paper"){
           if (computerSelection === "rock"){
             document.getElementById("round").innerHTML = "Paper beats rock, you win";
             return "Win";
@@ -55,7 +55,7 @@
             return "Lose";
           }
         }
-        if (playerSelection.toLowerCase() === "scissors"){
+        if (playerSelection === "scissors"){
           if (computerSelection === "rock"){
             document.getElementById("round").innerHTML = "Rock beats scissors, you lose!";
             return "Lose";
