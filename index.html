@@ -77,7 +77,7 @@
     //const rock = document.querySelector('#rock');
     //const paper = document.querySelector('#paper');
     //const scissors = document.querySelector('#scissors');
-    //It is best to use the forEach method than create an event for each button, like the examples above
+    //It is best to use the forEach method than create an event for each button, like i used in the examples above
     buttons.forEach((button) => {
 
     button.addEventListener('click', () => {
@@ -87,14 +87,14 @@
     });
     
     function game(score){
+      //reset the final result after completing a bo5 game
+      document.getElementById("result").innerHTML = "";
       if (score === "Win"){
         win++;
         document.getElementById("score").innerHTML = win + " x " + lose;
-        //console.log(win + " x " + lose);
       } else if (score === "Lose"){
         lose++;
         document.getElementById("score").innerHTML = win + " x " + lose;
-        //console.log(win + " x " + lose);
       } else if (score === "Tie"){
         document.getElementById("score").innerHTML = win + " x " + lose;     
       }
