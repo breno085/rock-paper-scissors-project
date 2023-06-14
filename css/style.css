@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .buttons{
+    display: flex;
+    justify-content: center;
+ }
+
+ button {
+    margin: 10px;
+ }
+
+#score {
+    margin-bottom: 10px;
+}

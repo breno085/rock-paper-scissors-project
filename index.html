@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  
   <h1>You vs the Computer!</h1>
   <h3>Score</h3>
-
-  <div id="round"></div>
   <div id="score"></div>
+  <div id="round"></div>
   <div id="result"></div>
 
+  <div class="buttons">
   <button id="rock">Rock</button>
   <button id="paper">Paper</button>
   <button id="scissors">Scissors</button>
-
+  </div>
     <script>
         function getComputerChoice(){
           let num = Math.random();
